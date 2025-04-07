@@ -1,0 +1,7 @@
+requests==2.31.0
+pandas==2.0.0
+mysql-connector-python==8.0.33
+SQLAlchemy==2.0.20
+python-dotenv==1.0.0
+openpyxl==3.1.2
+pytest==7.4.0
