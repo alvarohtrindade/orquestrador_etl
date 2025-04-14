@@ -5,6 +5,19 @@ import mysql.connector
 import sys
 import json
 import argparse
+import time
+from datetime import datetime
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente
+load_dotenv()
+
+# Variáveis do banco de dados
+DB_HOST = os.getenv('DB_HOST')
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_NAME = os.getenv('DB_NAME')
+DB_TABLE = os.getenv('DB_TABLE', 'Ft_CarteiraDiaria')  # Tabela padrão se não estiver definida
 
 # Função para carregar mappings de arquivos JSON
 def load_json_mapping(file_path):
@@ -24,10 +37,16 @@ def load_json_mapping(file_path):
         print(f"Erro ao carregar o arquivo de mapeamento {file_path}: {e}")
         return {}
 
-# Carregar mapeamentos
+# Obter diretório do script atual
 script_dir = os.path.dirname(os.path.abspath(__file__))
-fund_mapping_path = os.path.join(script_dir, 'map_nmfundos.json')
-description_mapping_path = os.path.join(script_dir, 'map_description.json')
+# Diretório mappings está um nível acima no projeto reorganizado
+mappings_dir = os.path.join(os.path.dirname(script_dir), 'mappings')
+
+# Carregar mapeamentos
+fund_mapping_path = os.path.join(mappings_dir, 'map_nmfundos.json')
+description_mapping_path = os.path.join(mappings_dir, 'map_description.json')
+
+print(f"Carregando mapeamentos de: {mappings_dir}")
 mapping = load_json_mapping(fund_mapping_path)
 descricao_dict = load_json_mapping(description_mapping_path)
 
@@ -390,6 +409,8 @@ def extract_and_format_data(df):
         nome_fundo = df.iloc[5, 0].replace('_', ' ')
         data = df.iloc[6, 1]
         
+        print(f"Processando fundo: {nome_fundo} | Data: {data}")
+        
         portfolio_df, new_column_names = process_portfolio_investido(df, nome_fundo, data)
         
         if portfolio_df is None:
@@ -421,12 +442,17 @@ def read_excel_file(file_path):
     Returns:
         DataFrame com os dados do arquivo Excel
     """
-    df = pd.read_excel(file_path)
-    temp_csv_path = os.path.join(os.path.dirname(file_path), "temp.csv")
-    df.to_csv(temp_csv_path, index=False, header=True)
-    df = pd.read_csv(temp_csv_path)
-    os.remove(temp_csv_path)
-    return df
+    try:
+        print(f"Lendo arquivo: {file_path}")
+        df = pd.read_excel(file_path)
+        temp_csv_path = os.path.join(os.path.dirname(file_path), f"temp_{os.path.basename(file_path)}.csv")
+        df.to_csv(temp_csv_path, index=False, header=True)
+        df = pd.read_csv(temp_csv_path)
+        os.remove(temp_csv_path)
+        return df
+    except Exception as e:
+        print(f"Erro ao ler arquivo Excel {file_path}: {e}")
+        return None
 
 
 def process_files(input_directory):
@@ -439,21 +465,54 @@ def process_files(input_directory):
     Returns:
         DataFrame com todos os dados processados
     """
+    start_time = time.time()
+    
+    # Verificar se o diretório existe
+    if not os.path.exists(input_directory):
+        print(f"ERRO: Diretório {input_directory} não encontrado.")
+        return pd.DataFrame()
+    
+    # Listar arquivos XLSX
     files = [f for f in os.listdir(input_directory) if f.endswith('.xlsx')]
+    
+    if not files:
+        print(f"AVISO: Nenhum arquivo XLSX encontrado no diretório {input_directory}")
+        return pd.DataFrame()
+    
+    print(f"MÉTRICA: Encontrados {len(files)} arquivos XLSX para processamento")
+    
     all_dataframes = []
+    fundos_processados = []
     
     for file in files:
         file_path = os.path.join(input_directory, file)
         print(f"Processando arquivo: {file}")
         
         df = read_excel_file(file_path)
+        
+        if df is None:
+            continue
+            
         final_df = extract_and_format_data(df)
         
         if final_df is not None:
             all_dataframes.append(final_df)
+            
+            # Adicionar o nome do fundo à lista de fundos processados (se não estiver já)
+            nome_fundo = final_df['Nome Fundo'].iloc[0] if not final_df.empty else "Desconhecido"
+            if nome_fundo not in fundos_processados:
+                fundos_processados.append(nome_fundo)
     
     if all_dataframes:
-        return pd.concat(all_dataframes, ignore_index=True)
+        result_df = pd.concat(all_dataframes, ignore_index=True)
+        
+        # Registrar métricas
+        elapsed_time = time.time() - start_time
+        print(f"MÉTRICA: Tempo de execução: {elapsed_time:.2f} segundos")
+        print(f"MÉTRICA: Total de fundos processados: {len(fundos_processados)}")
+        print(f"MÉTRICA: Total de registros processados: {len(result_df)}")
+        
+        return result_df
     else:
         print("Nenhum dado processado.")
         return pd.DataFrame()
@@ -599,11 +658,16 @@ def insert_dataframe_in_batches(df, connection, table_name, batch_size=10000):
         batch_size: Tamanho de cada lote
     """
     total_registros = len(df)
+    start_time = time.time()
     
     for i in range(0, total_registros, batch_size):
         pedaco_df = df.iloc[i:i+batch_size]
         insert_batch_to_mysql(pedaco_df, connection, table_name)
-        print(f"Registros inseridos: {i + len(pedaco_df)} / {total_registros}")
+        registros_processados = min(i + batch_size, total_registros)
+        print(f"MÉTRICA: Registros inseridos: {registros_processados} / {total_registros} ({(registros_processados/total_registros)*100:.1f}%)")
+    
+    elapsed_time = time.time() - start_time
+    print(f"MÉTRICA: Tempo de inserção no banco: {elapsed_time:.2f} segundos")
 
 
 def insert_to_mysql(final_dataframe, host, database, user, password):
@@ -617,8 +681,14 @@ def insert_to_mysql(final_dataframe, host, database, user, password):
         user: Usuário do banco de dados
         password: Senha do banco de dados
     """
+    # Verificar se o DataFrame está vazio
+    if final_dataframe.empty:
+        print("ERRO: Nenhum dado para inserir no banco.")
+        return False
+    
     # Conectar ao banco de dados MySQL
     try:
+        print("Conectando ao banco de dados MySQL...")
         connection = mysql.connector.connect(
             host=host,
             database=database,
@@ -627,12 +697,13 @@ def insert_to_mysql(final_dataframe, host, database, user, password):
         )
         
         if connection.is_connected():
-            print('Conectado ao MySQL')
+            print('Conectado ao MySQL com sucesso')
             
             # Inserir dados em lotes
-            insert_dataframe_in_batches(final_dataframe, connection, 'Ft_CarteiraDiaria')
+            print(f"Iniciando inserção de {len(final_dataframe)} registros na tabela {DB_TABLE}")
+            insert_dataframe_in_batches(final_dataframe, connection, DB_TABLE)
             
-            # Executar a procedure para atualizar os CNPJs (você precisará criar esta procedure no MySQL)
+            # Executar a procedure para atualizar os CNPJs
             cursor = connection.cursor()
             data_posicao = final_dataframe['DtPosicao'].iloc[0]  # Assume que todos os registros têm a mesma data
             
@@ -643,8 +714,11 @@ def insert_to_mysql(final_dataframe, host, database, user, password):
             print('Inserção e atualização de CNPJs concluídas com sucesso')
             cursor.close()
             
+            return True
+            
     except Exception as e:
-        print(f"Erro durante a operação: {e}")
+        print(f"ERRO ao inserir dados no banco: {e}")
+        return False
     finally:
         if 'connection' in locals() and connection.is_connected():
             connection.close()
@@ -655,45 +729,89 @@ def main():
     """
     Função principal que coordena o processamento de arquivos e inserção no banco de dados
     """
+    print("=" * 80)
+    print("INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA BTG")
+    print("=" * 80)
+    
+    start_time = time.time()
+    
     # Configurar o parser de argumentos
     parser = argparse.ArgumentParser(description='Processa arquivos de carteira diária BTG')
     parser.add_argument('input_directory', help='Diretório contendo os arquivos a serem processados')
     parser.add_argument('--no-mapping', action='store_true', help='Desativa o mapeamento de nomes de fundos')
+    parser.add_argument('--save-csv', action='store_true', help='Salva os dados em CSV sem inserir no banco')
+    parser.add_argument('--output-csv', help='Caminho para salvar o arquivo CSV (usado com --save-csv)')
+    parser.add_argument('--auto', action='store_true', help='Executa automaticamente sem solicitar confirmação')
     
     args = parser.parse_args()
     
     input_directory = args.input_directory
-    host = args.host
-    database = args.database
-    user = args.user
-    password = args.password
     apply_mapping = not args.no_mapping  # Inverter a flag (--no-mapping significa apply_mapping=False)
     
-    print(f"Processando arquivos do diretório: {input_directory}")
+    print(f"Diretório de entrada: {input_directory}")
     print(f"Mapeamento de nomes de fundos: {'DESATIVADO' if args.no_mapping else 'ATIVADO'}")
+    print(f"Modo: {'Automático' if args.auto else 'Interativo'}")
     
     # Processar os arquivos
     final_dataframe = process_files(input_directory)
     
     if final_dataframe.empty:
-        print("Nenhum dado para processar.")
-        return
+        print("ERRO: Nenhum dado para processar.")
+        print("=" * 80)
+        print("PROCESSAMENTO FINALIZADO COM FALHA")
+        print("=" * 80)
+        return 1
     
     # Preparar o DataFrame (passando a flag de mapeamento)
     final_dataframe = prepare_dataframe(final_dataframe, apply_mapping)
     
-    print(f"Total de registros processados: {len(final_dataframe)}")
+    print(f"MÉTRICA: Total de registros processados: {len(final_dataframe)}")
     
-    # Pergunte se deseja inserir os dados no banco de dados
-    resposta = input("Deseja inserir os dados no banco de dados MySQL? (s/n): ")
-    if resposta.lower() == 's':
-        insert_to_mysql(final_dataframe, host, database, user, password)
+    # Salvar em CSV se solicitado
+    if args.save_csv:
+        output_csv = args.output_csv or os.path.join(input_directory, f"processado_carteira_diaria_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
+        final_dataframe.to_csv(output_csv, index=False)
+        print(f"Dados salvos em: {output_csv}")
+        
+        total_time = time.time() - start_time
+        print(f"MÉTRICA: Tempo total de execução: {total_time:.2f} segundos")
+        print("=" * 80)
+        print("PROCESSAMENTO FINALIZADO COM SUCESSO (MODO CSV)")
+        print("=" * 80)
+        return 0
+    
+    # Verificar credenciais do banco
+    if not all([DB_HOST, DB_NAME, DB_USER, DB_PASSWORD]):
+        print("ERRO: Credenciais de banco de dados incompletas no arquivo .env")
+        print("Verifique se as variáveis DB_HOST, DB_NAME, DB_USER e DB_PASSWORD estão definidas.")
+        print("=" * 80)
+        print("PROCESSAMENTO FINALIZADO COM FALHA")
+        print("=" * 80)
+        return 1
+    
+    # Se --auto foi especificado, não perguntar por confirmação
+    if args.auto:
+        sucesso = insert_to_mysql(final_dataframe, DB_HOST, DB_NAME, DB_USER, DB_PASSWORD)
     else:
-        print("Teste CSV desativado")
-        # # Salvar em um arquivo CSV localmente
-        # output_path = os.path.join(input_directory, "processado_carteira_diaria.csv")
-        # final_dataframe.to_csv(output_path, index=False)
-        # print(f"Dados salvos em {output_path}")
+        # Pergunte se deseja inserir os dados no banco de dados
+        resposta = input("Deseja inserir os dados no banco de dados MySQL? (s/n): ")
+        if resposta.lower() == 's':
+            sucesso = insert_to_mysql(final_dataframe, DB_HOST, DB_NAME, DB_USER, DB_PASSWORD)
+        else:
+            print("Operação cancelada pelo usuário.")
+            sucesso = False
+    
+    total_time = time.time() - start_time
+    print(f"MÉTRICA: Tempo total de execução: {total_time:.2f} segundos")
+    print("=" * 80)
+    
+    if sucesso:
+        print("PROCESSAMENTO FINALIZADO COM SUCESSO")
+    else:
+        print("PROCESSAMENTO FINALIZADO COM FALHA")
+    
+    print("=" * 80)
+    return 0 if sucesso else 1
 
 if __name__ == "__main__":
-    main()
+    exit(main())

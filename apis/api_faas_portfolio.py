@@ -6,6 +6,8 @@ import time
 import argparse
 import mysql.connector
 import traceback
+import shutil
+import glob
 
 from dotenv import load_dotenv
 
@@ -17,10 +19,10 @@ PORTFOLIO_URL = os.getenv("PORTFOLIO_URL")
 TICKET_URL = os.getenv("TICKET_URL")
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-SCOPE = os.getenv("SCOPE")
+SCOPE = os.getenv("SCOPE_CARTEIRA")
 
-# Caminho onde os arquivos XLSX serão armazenados
-DOWNLOAD_PATH = os.getenv("BTG_REPORTH_PATH")
+# Caminho padrão onde os arquivos XLSX serão armazenados
+DEFAULT_DOWNLOAD_PATH = os.getenv("BTG_REPORT_PATH")
 
 # Configurações do banco de dados
 DB_HOST = os.getenv("DB_HOST")
@@ -129,7 +131,7 @@ def request_portfolio_ticket(token: str, data_ref: datetime.date) -> str:
     else:
         raise Exception(f"Erro ao solicitar ticket: {response.status_code} - {response.text}")
 
-def download_report_zip(token: str, ticket: str) -> str:
+def download_report_zip(token: str, ticket: str, download_path: str) -> str:
     """Faz o download do relatório ZIP com arquivos XLSX."""
     headers = {
         "accept": "application/zip",
@@ -165,7 +167,7 @@ def download_report_zip(token: str, ticket: str) -> str:
 
             # Verificar se é um arquivo ZIP
             elif 'application/zip' in content_type or 'application/octet-stream' in content_type:
-                zip_path = os.path.join(DOWNLOAD_PATH, f"relatorio_{ticket}.zip")
+                zip_path = os.path.join(download_path, f"relatorio_{ticket}.zip")
                 with open(zip_path, 'wb') as f:
                     f.write(response.content)
                 return zip_path
@@ -181,10 +183,55 @@ def download_report_zip(token: str, ticket: str) -> str:
     
     raise Exception("Timeout ao aguardar o relatório ficar pronto")
 
-def extract_zip(zip_path: str) -> None:
-    """Extrai arquivos XLSX de um arquivo ZIP."""
+def clean_directory(directory: str) -> None:
+    """Limpa todos os arquivos de um diretório."""
+    if os.path.exists(directory):
+        for file_item in os.listdir(directory):
+            file_path = os.path.join(directory, file_item)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print(f"Erro ao remover {file_path}: {e}")
+        print(f"Diretório {directory} limpo com sucesso.")
+    else:
+        os.makedirs(directory)
+        print(f"Diretório {directory} criado.")
+
+def extract_zip(zip_path: str, extract_dir: str, remove_zip: bool = True) -> int:
+    """
+    Extrai arquivos XLSX de um arquivo ZIP e retorna o número de arquivos extraídos.
+    
+    Args:
+        zip_path: Caminho para o arquivo ZIP
+        extract_dir: Diretório para extrair os arquivos
+        remove_zip: Se True, remove o arquivo ZIP após extração
+        
+    Returns:
+        int: Número de arquivos XLSX extraídos
+    """
+    # Verificar se já existem arquivos no diretório
+    existing_files = glob.glob(os.path.join(extract_dir, "*.xlsx"))
+    if existing_files:
+        print(f"Encontrados {len(existing_files)} arquivos existentes no diretório. Limpando antes da extração...")
+        clean_directory(extract_dir)
+    
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(DOWNLOAD_PATH)
+        zip_ref.extractall(extract_dir)
+    
+    # Remover o arquivo ZIP se solicitado
+    if remove_zip and os.path.exists(zip_path):
+        try:
+            os.remove(zip_path)
+            print(f"Arquivo ZIP removido: {zip_path}")
+        except Exception as e:
+            print(f"Erro ao remover arquivo ZIP: {e}")
+    
+    # Contar arquivos XLSX extraídos
+    xlsx_files = glob.glob(os.path.join(extract_dir, "*.xlsx"))
+    return len(xlsx_files)
 
 def resolve_reference_date(n_days: int = None, specific_date: str = None) -> datetime.date:
     """
@@ -213,38 +260,77 @@ def resolve_reference_date(n_days: int = None, specific_date: str = None) -> dat
     else:
         today = datetime.date.today()
         try:
-            return get_business_day(today, n_days + 1 or 1)
+            return get_business_day(today, n_days + 1 if n_days is not None else 1)
         except Exception as e:
             raise ValueError(
                 f"Erro ao calcular o {n_days or 1} dia útil anterior a {today}: {str(e)}"
             ) from e
 
-def main(n_days: int = None, specific_date: str = None) -> None:
-    print('n_days:', n_days)
-    print('specific_date:', specific_date)
-    try:
-        data_ref = resolve_reference_date(n_days, specific_date)
-        print('data_ref:', data_ref)
-        print(f"Iniciando extração do relatório para a data: {data_ref}")
+def get_formatted_date_directory(data_ref: datetime.date) -> str:
+    """
+    Retorna o nome do diretório formatado com base na data de referência.
+    
+    Args:
+        data_ref: Data de referência
+        
+    Returns:
+        str: Nome do diretório no formato 'dd.mm'
+    """
+    return data_ref.strftime("%d.%m")
 
+def main(n_days: int = None, specific_date: str = None, output_dir: str = None) -> None:
+    try:
+        # Resolver a data de referência
+        data_ref = resolve_reference_date(n_days, specific_date)
+        print(f"Iniciando extração do relatório para a data: {data_ref}")
+        
+        # Determinar o diretório de destino
+        base_output_dir = output_dir or DEFAULT_DOWNLOAD_PATH
+        
+        # Criar o diretório com formato de data
+        date_dir_name = get_formatted_date_directory(data_ref)
+        final_output_dir = os.path.join(base_output_dir, date_dir_name)
+        
+        # Garantir que o diretório base existe
+        if not os.path.exists(base_output_dir):
+            os.makedirs(base_output_dir)
+            print(f"Diretório base criado: {base_output_dir}")
+        
+        # Verificar se o diretório de data já existe - se não, criar
+        if not os.path.exists(final_output_dir):
+            os.makedirs(final_output_dir)
+            print(f"Diretório de data criado: {final_output_dir}")
+        else:
+            print(f"Usando diretório de data existente: {final_output_dir}")
+        
+        # Obter token e ticket
         token = get_token()
         ticket = request_portfolio_ticket(token, data_ref)
-        zip_path = download_report_zip(token, ticket)
-
-        print(f"Descompactando o arquivo ZIP em {zip_path}...")
-        extract_zip(zip_path)
-
-        print("Arquivos XLSX foram salvos com sucesso!")
+        
+        # Download e extração do ZIP
+        zip_path = download_report_zip(token, ticket, base_output_dir)
+        print(f"Arquivo ZIP baixado: {zip_path}")
+        
+        # Extrair o ZIP, remover o arquivo ZIP após extração e contar arquivos
+        num_files = extract_zip(zip_path, final_output_dir, remove_zip=True)
+        
+        print(f"Extração concluída com sucesso no diretório: {final_output_dir}")
+        print(f"Total de arquivos de fundos extraídos: {num_files}")
 
     except Exception as e:       
         print(f"Erro durante a execução do processo: {str(e)}")
-        print(traceback.format_exc())  
+        print(traceback.format_exc())
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Download de relatório BTG para uma data específica.')
-    group = parser.add_mutually_exclusive_group(required=False)
-    group.add_argument('--n-days', type=int, help='Número de dias úteis a subtrair da data atual')
-    group.add_argument('--date',   type=str, help='Data específica no formato YYYY-MM-DD (ex: 2025-03-30)')
+    
+    # Grupo mutuamente exclusivo para a data
+    date_group = parser.add_mutually_exclusive_group(required=False)
+    date_group.add_argument('--n-days', type=int, help='Número de dias úteis a subtrair da data atual')
+    date_group.add_argument('--date', type=str, help='Data específica no formato YYYY-MM-DD (ex: 2025-03-30)')
+    
+    # Opção para o diretório de saída
+    parser.add_argument('--output-dir', type=str, help='Diretório onde os arquivos serão salvos')
     
     args = parser.parse_args()
-    main(n_days=args.n_days, specific_date=args.date)
+    main(n_days=args.n_days, specific_date=args.date, output_dir=args.output_dir)
