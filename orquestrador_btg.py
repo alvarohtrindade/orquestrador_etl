@@ -126,7 +126,7 @@ def executar_comando(comando, mensagem_erro, capturar_metricas=False):
     
     return True, metricas
 
-def processar_carteira(data=None, dias_atras=1, diretorio_saida=None):
+def processar_carteira(data=None, dias_atras=1, diretorio_saida=None, apenas_extracao=False):
     """
     Processa o fluxo de carteira diária
     
@@ -134,6 +134,7 @@ def processar_carteira(data=None, dias_atras=1, diretorio_saida=None):
         data: Data específica no formato YYYY-MM-DD
         dias_atras: Número de dias úteis atrás para processamento
         diretorio_saida: Diretório personalizado para saída
+        apenas_extracao: Se True, executa apenas a etapa de extração sem processamento/BD
         
     Returns:
         tuple: (sucesso, metricas) onde:
@@ -142,6 +143,8 @@ def processar_carteira(data=None, dias_atras=1, diretorio_saida=None):
     """
     logger.info("=" * 50)
     logger.info("INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA")
+    if apenas_extracao:
+        logger.info("MODO: APENAS EXTRAÇÃO (sem inserção no banco de dados)")
     logger.info("=" * 50)
     
     # Inicializar métricas
@@ -183,6 +186,14 @@ def processar_carteira(data=None, dias_atras=1, diretorio_saida=None):
     
     # Atualizar métricas de extração
     metricas_carteira["extracao"].update(metricas_extracao)
+    
+    # Se apenas extração, retorna aqui
+    if apenas_extracao:
+        logger.info("=" * 50)
+        logger.info("EXTRAÇÃO DE CARTEIRA CONCLUÍDA COM SUCESSO")
+        logger.info(f"- Data de Referência: {metricas_carteira['data_referencia']}")
+        logger.info("=" * 50)
+        return True, metricas_carteira
     
     # Determinar o diretório onde os dados foram salvos
     if not data:
@@ -254,7 +265,7 @@ def processar_carteira(data=None, dias_atras=1, diretorio_saida=None):
     
     return True, metricas_carteira
 
-def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None):
+def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None, apenas_extracao=False):
     """
     Processa o fluxo de rentabilidade
     
@@ -262,6 +273,7 @@ def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None):
         data: Data específica no formato YYYY-MM-DD
         dias_atras: Número de dias úteis atrás para processamento
         diretorio_saida: Diretório personalizado para saída
+        apenas_extracao: Se True, executa apenas a etapa de extração sem processamento/BD
         
     Returns:
         tuple: (sucesso, metricas) onde:
@@ -270,6 +282,8 @@ def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None):
     """
     logger.info("=" * 50)
     logger.info("INICIANDO PROCESSAMENTO DE RENTABILIDADE")
+    if apenas_extracao:
+        logger.info("MODO: APENAS EXTRAÇÃO (sem inserção no banco de dados)")
     logger.info("=" * 50)
     
     # Inicializar métricas
@@ -310,6 +324,14 @@ def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None):
     
     # Atualizar métricas de extração
     metricas_rentabilidade["extracao"].update(metricas_extracao)
+    
+    # Se apenas extração, retorna aqui
+    if apenas_extracao:
+        logger.info("=" * 50)
+        logger.info("EXTRAÇÃO DE RENTABILIDADE CONCLUÍDA COM SUCESSO")
+        logger.info(f"- Data de Referência: {metricas_rentabilidade['data_referencia']}")
+        logger.info("=" * 50)
+        return True, metricas_rentabilidade
     
     # Determinar o diretório onde os dados foram salvos
     if not data:
@@ -392,6 +414,8 @@ def main():
     parser.add_argument("--dir-carteira", help="Diretório personalizado para carteira")
     parser.add_argument("--dir-rentabilidade", help="Diretório personalizado para rentabilidade")
     parser.add_argument("--salvar-metricas", action="store_true", help="Salvar métricas em arquivo JSON")
+    parser.add_argument("--apenas-extracao", action="store_true", 
+                        help="Executa apenas a etapa de extração de dados, sem inserção no banco")
     
     args = parser.parse_args()
     
@@ -400,6 +424,8 @@ def main():
     logger.info("INICIANDO ORQUESTRADOR BTG ETL")
     logger.info(f"Tipo: {args.tipo}")
     logger.info(f"Data: {args.data if args.data else f'{args.dias_atras} dias atrás'}")
+    if args.apenas_extracao:
+        logger.info(f"Modo: APENAS EXTRAÇÃO (sem inserção no banco de dados)")
     logger.info("=" * 80)
     
     # Verificar diretórios de saída existem no .env
@@ -415,12 +441,22 @@ def main():
     todas_metricas = []
     
     if args.tipo in ["carteira", "ambos"]:
-        sucesso_carteira, metricas_carteira = processar_carteira(args.data, args.dias_atras, args.dir_carteira)
+        sucesso_carteira, metricas_carteira = processar_carteira(
+            args.data, 
+            args.dias_atras, 
+            args.dir_carteira,
+            args.apenas_extracao
+        )
         sucesso = sucesso_carteira and sucesso
         todas_metricas.append(metricas_carteira)
         
     if args.tipo in ["rentabilidade", "ambos"]:
-        sucesso_rentabilidade, metricas_rentabilidade = processar_rentabilidade(args.data, args.dias_atras, args.dir_rentabilidade)
+        sucesso_rentabilidade, metricas_rentabilidade = processar_rentabilidade(
+            args.data, 
+            args.dias_atras, 
+            args.dir_rentabilidade,
+            args.apenas_extracao
+        )
         sucesso = sucesso_rentabilidade and sucesso
         todas_metricas.append(metricas_rentabilidade)
     
@@ -446,12 +482,14 @@ def main():
         logger.info(f"Tipo: {metrica['tipo'].upper()}")
         logger.info(f"Data de Referência: {metrica['data_referencia']}")
         logger.info(f"Extração - Total de Fundos: {metrica['extracao'].get('total_fundos', 0)}")
-        logger.info(f"Processamento - Total de Registros: {metrica['processamento'].get('total_registros', 0)}")
+        if not args.apenas_extracao:
+            logger.info(f"Processamento - Total de Registros: {metrica['processamento'].get('total_registros', 0)}")
         logger.info("-" * 40)
     
     # Rodapé do log
     logger.info("=" * 80)
-    logger.info(f"ORQUESTRADOR BTG ETL FINALIZADO - Status: {'SUCESSO' if sucesso else 'FALHA'}")
+    modo_str = "EXTRAÇÃO" if args.apenas_extracao else "ETL COMPLETO"
+    logger.info(f"ORQUESTRADOR BTG {modo_str} FINALIZADO - Status: {'SUCESSO' if sucesso else 'FALHA'}")
     logger.info("=" * 80)
     
     # Código de saída para integração com sistemas de agendamento

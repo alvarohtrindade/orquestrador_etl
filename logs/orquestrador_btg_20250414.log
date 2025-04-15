@@ -1,0 +1,476 @@
+2025-04-14 10:53:58,649 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 10:53:58,649 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 10:53:58,650 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 10:54:31,025 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 10:54:31,025 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 0
+2025-04-14 10:54:31,026 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 10:54:31,221 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 0 arquivos XLSX para processamento
+2025-04-14 10:54:31,222 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 10:54:32,240 - OrquestradorBTG - ERROR - Falha no processamento dos dados de carteira: 
+2025-04-14 10:54:32,240 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 10:54:32,240 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - Extração - Total de Fundos: 0
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - Processamento - Total de Registros: 0
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: FALHA
+2025-04-14 10:54:32,241 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 13:51:23,492 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 13:51:23,494 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 13:51:59,770 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 13:51:59,770 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 18
+2025-04-14 13:51:59,771 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 13:51:59,772 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 18 arquivos XLSX para processamento
+2025-04-14 13:51:59,772 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 13:55:11,515 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 13:55:11,515 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 32.11 segundos
+2025-04-14 13:55:11,515 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 18
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 143
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 143
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 6.35 segundos
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 191.17 segundos
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 13:55:11,516 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - - Total de Fundos: 18
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - - Total de Registros Processados: 143
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 13:55:11,517 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - Extração - Total de Fundos: 18
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - Processamento - Total de Registros: 143
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: SUCESSO
+2025-04-14 13:55:11,518 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:32:42,493 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:32:42,493 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 14:32:42,493 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 14:32:42,493 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 14:32:42,494 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:32:42,494 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 14:32:42,494 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 14:32:42,494 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 14:32:42,494 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 14:41:08,880 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 14:41:08,910 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 14:41:08,973 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 18 arquivos XLSX para processamento
+2025-04-14 14:41:08,973 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 14:43:56,183 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 14:43:56,183 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 10.45 segundos
+2025-04-14 14:43:56,183 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 18
+2025-04-14 14:43:56,184 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 143
+2025-04-14 14:43:56,184 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 143
+2025-04-14 14:43:56,184 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 2.02 segundos
+2025-04-14 14:43:56,184 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 166.56 segundos
+2025-04-14 14:43:56,184 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - - Total de Fundos: 0
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - - Total de Registros Processados: 143
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:43:56,185 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 14:43:56,186 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:43:56,186 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 14:43:56,186 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 14:43:56,186 - OrquestradorBTG - INFO - Extração - Total de Fundos: 0
+2025-04-14 14:43:56,186 - OrquestradorBTG - INFO - Processamento - Total de Registros: 143
+2025-04-14 14:43:56,186 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 14:43:56,187 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:43:56,187 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: SUCESSO
+2025-04-14 14:43:56,187 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:57:59,114 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:57:59,115 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 14:57:59,115 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 14:57:59,115 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 14:57:59,115 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 14:57:59,115 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 14:57:59,115 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 14:57:59,116 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 14:57:59,116 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 15:02:04,288 - OrquestradorBTG - ERROR - Falha na extração de dados de carteira: 
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 15:02:12,074 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:02:12,089 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 15:07:36,233 - OrquestradorBTG - ERROR - Falha na extração de dados de carteira: 
+2025-04-14 15:15:10,451 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:15:10,452 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 15:15:10,452 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 15:15:10,452 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 15:15:10,452 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:15:10,452 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:15:10,453 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 15:15:10,453 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:15:10,453 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 15:21:52,805 - OrquestradorBTG - ERROR - Falha na extração de dados de carteira: 
+2025-04-14 15:43:53,175 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:43:53,175 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 15:43:53,175 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 15:43:53,175 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 15:43:53,175 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:43:53,176 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:43:53,176 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 15:43:53,176 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:43:53,176 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 15:44:25,120 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 15:44:25,121 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 24
+2025-04-14 15:44:25,122 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 15:44:25,123 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 24 arquivos XLSX para processamento
+2025-04-14 15:44:25,123 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 15:47:15,023 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 15:47:15,024 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 13.88 segundos
+2025-04-14 15:47:15,024 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 24
+2025-04-14 15:47:15,024 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 181
+2025-04-14 15:47:15,024 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 181
+2025-04-14 15:47:15,025 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 2.56 segundos
+2025-04-14 15:47:15,025 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 169.29 segundos
+2025-04-14 15:47:15,025 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:47:15,025 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 15:47:15,025 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - - Total de Fundos: 24
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - - Total de Registros Processados: 181
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:47:15,026 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - Extração - Total de Fundos: 24
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - Processamento - Total de Registros: 181
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: SUCESSO
+2025-04-14 15:47:15,027 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 17:30:32,655 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 17:30:32,655 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 17:30:32,655 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 17:30:32,655 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 17:30:32,656 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 17:30:32,656 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 17:30:32,656 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 17:30:32,656 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 17:30:32,656 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 17:31:15,416 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 17:31:15,416 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 29
+2025-04-14 17:31:15,417 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 17:31:15,418 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 29 arquivos XLSX para processamento
+2025-04-14 17:31:15,418 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 17:34:12,868 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 17:34:12,869 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 19.92 segundos
+2025-04-14 17:34:12,869 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 29
+2025-04-14 17:34:12,869 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 212
+2025-04-14 17:34:12,869 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 212
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 3.17 segundos
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 176.51 segundos
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - - Total de Fundos: 29
+2025-04-14 17:34:12,870 - OrquestradorBTG - INFO - - Total de Registros Processados: 212
+2025-04-14 17:34:12,871 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 17:34:12,871 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 17:34:12,871 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 17:34:12,871 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 17:34:12,871 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 17:34:12,872 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 17:34:12,872 - OrquestradorBTG - INFO - Extração - Total de Fundos: 29
+2025-04-14 17:34:12,872 - OrquestradorBTG - INFO - Processamento - Total de Registros: 212
+2025-04-14 17:34:12,872 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 17:34:12,872 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 17:34:12,873 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: SUCESSO
+2025-04-14 17:34:12,873 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:35,339 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:35,340 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 18:08:35,340 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 18:08:35,340 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 18:08:35,340 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:35,340 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:08:35,340 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 18:08:35,341 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:08:35,341 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 18:08:35,883 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 18:08:35,884 - OrquestradorBTG - ERROR - Diretório de dados não encontrado: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 18:08:35,884 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:35,884 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - Extração - Total de Fundos: 0
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - Processamento - Total de Registros: 0
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:35,885 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: FALHA
+2025-04-14 18:08:35,886 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:08:42,415 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 18:08:42,933 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 18:08:42,935 - OrquestradorBTG - ERROR - Diretório de dados não encontrado: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 18:08:42,935 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:42,935 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 18:08:42,935 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:42,935 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - Extração - Total de Fundos: 0
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - Processamento - Total de Registros: 0
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: FALHA
+2025-04-14 18:08:42,936 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:09:11,938 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:10:30,697 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 18:11:03,512 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 18:11:03,512 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 35
+2025-04-14 18:11:03,512 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 18:11:03,512 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 35 arquivos XLSX para processamento
+2025-04-14 18:11:03,512 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 18:14:02,195 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 18:14:02,196 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 19.83 segundos
+2025-04-14 18:14:02,196 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 35
+2025-04-14 18:14:02,196 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 310
+2025-04-14 18:14:02,197 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 310
+2025-04-14 18:14:02,197 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 4.63 segundos
+2025-04-14 18:14:02,197 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 178.0 segundos
+2025-04-14 18:14:02,197 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:14:02,197 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 18:14:02,198 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 18:14:02,198 - OrquestradorBTG - INFO - - Total de Fundos: 35
+2025-04-14 18:14:02,198 - OrquestradorBTG - INFO - - Total de Registros Processados: 310
+2025-04-14 18:14:02,198 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 18:14:02,198 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:14:02,198 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - Extração - Total de Fundos: 35
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - Processamento - Total de Registros: 310
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 18:14:02,199 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 18:14:02,200 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL FINALIZADO - Status: SUCESSO
+2025-04-14 18:14:02,200 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:33:14,010 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - Modo: APENAS EXTRAÇÃO (sem inserção no banco de dados)
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 20:33:14,011 - OrquestradorBTG - INFO - MODO: APENAS EXTRAÇÃO (sem inserção no banco de dados)
+2025-04-14 20:33:14,012 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:33:14,012 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 20:33:52,038 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 35
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - EXTRAÇÃO DE CARTEIRA CONCLUÍDA COM SUCESSO
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - Extração - Total de Fundos: 35
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ORQUESTRADOR BTG EXTRAÇÃO FINALIZADO - Status: SUCESSO
+2025-04-14 20:33:52,040 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:35:23,076 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:35:23,076 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 20:35:23,076 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 20:35:23,076 - OrquestradorBTG - INFO - Data: 2025-04-12
+2025-04-14 20:35:23,077 - OrquestradorBTG - INFO - Modo: APENAS EXTRAÇÃO (sem inserção no banco de dados)
+2025-04-14 20:35:23,077 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:35:23,077 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:35:23,077 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 20:35:23,077 - OrquestradorBTG - INFO - MODO: APENAS EXTRAÇÃO (sem inserção no banco de dados)
+2025-04-14 20:35:23,078 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:35:23,078 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-12
+2025-04-14 20:39:53,389 - OrquestradorBTG - ERROR - Falha na extração de dados de carteira: 
+2025-04-14 20:40:28,090 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:40:28,090 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 20:40:28,090 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 20:40:28,090 - OrquestradorBTG - INFO - Data: 2025-04-09
+2025-04-14 20:40:28,091 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:40:28,091 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:40:28,091 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 20:40:28,091 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:40:28,091 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-09
+2025-04-14 20:41:06,952 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:41:06,952 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 37
+2025-04-14 20:41:06,953 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\09.04
+2025-04-14 20:41:07,024 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 37 arquivos XLSX para processamento
+2025-04-14 20:41:07,024 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\09.04 --auto
+2025-04-14 20:44:13,466 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:44:13,467 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 28.04 segundos
+2025-04-14 20:44:13,468 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 37
+2025-04-14 20:44:13,468 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 351
+2025-04-14 20:44:13,468 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 351
+2025-04-14 20:44:13,468 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 5.91 segundos
+2025-04-14 20:44:13,468 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 185.8 segundos
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-09
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - - Total de Fundos: 37
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - - Total de Registros Processados: 351
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:44:13,469 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - Data de Referência: 2025-04-09
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - Extração - Total de Fundos: 37
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - Processamento - Total de Registros: 351
+2025-04-14 20:44:13,470 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 20:44:13,471 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:44:13,471 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL COMPLETO FINALIZADO - Status: SUCESSO
+2025-04-14 20:44:13,471 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:48:16,762 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:48:16,763 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 20:48:16,763 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 20:48:16,763 - OrquestradorBTG - INFO - Data: 2025-04-10
+2025-04-14 20:48:16,763 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:48:16,764 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:48:16,764 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 20:48:16,764 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:48:16,764 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-10
+2025-04-14 20:48:57,441 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:48:57,442 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 37
+2025-04-14 20:48:57,442 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\10.04
+2025-04-14 20:48:57,511 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 37 arquivos XLSX para processamento
+2025-04-14 20:48:57,511 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\10.04 --auto
+2025-04-14 20:51:58,703 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:51:58,703 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 23.06 segundos
+2025-04-14 20:51:58,704 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 37
+2025-04-14 20:51:58,704 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 351
+2025-04-14 20:51:58,704 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 351
+2025-04-14 20:51:58,705 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 5.53 segundos
+2025-04-14 20:51:58,705 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 180.56 segundos
+2025-04-14 20:51:58,705 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:51:58,705 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 20:51:58,705 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-10
+2025-04-14 20:51:58,705 - OrquestradorBTG - INFO - - Total de Fundos: 37
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - - Total de Registros Processados: 351
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - Data de Referência: 2025-04-10
+2025-04-14 20:51:58,706 - OrquestradorBTG - INFO - Extração - Total de Fundos: 37
+2025-04-14 20:51:58,707 - OrquestradorBTG - INFO - Processamento - Total de Registros: 351
+2025-04-14 20:51:58,707 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 20:51:58,707 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:51:58,707 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL COMPLETO FINALIZADO - Status: SUCESSO
+2025-04-14 20:51:58,707 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:52:29,598 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:52:29,599 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 20:52:29,599 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 20:52:29,599 - OrquestradorBTG - INFO - Data: 2025-04-11
+2025-04-14 20:52:29,599 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:52:29,599 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:52:29,600 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 20:52:29,600 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:52:29,600 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-11
+2025-04-14 20:53:08,258 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:53:08,259 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 35
+2025-04-14 20:53:08,299 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\11.04
+2025-04-14 20:53:08,442 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 35 arquivos XLSX para processamento
+2025-04-14 20:53:08,443 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\11.04 --auto
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 22.69 segundos
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - MÉTRICA: Total de fundos processados: 35
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 310
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - MÉTRICA: Total de registros processados: 310
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 5.31 segundos
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - MÉTRICA: Tempo de execução: 179.88 segundos
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - PROCESSAMENTO DE CARTEIRA CONCLUÍDO COM SUCESSO
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - - Data de Referência: 2025-04-11
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - - Total de Fundos: 35
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - - Total de Registros Processados: 310
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - Data de Referência: 2025-04-11
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - Extração - Total de Fundos: 35
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - Processamento - Total de Registros: 310
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL COMPLETO FINALIZADO - Status: SUCESSO
+2025-04-14 20:56:08,917 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:57:23,547 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:57:23,547 - OrquestradorBTG - INFO - INICIANDO ORQUESTRADOR BTG ETL
+2025-04-14 20:57:23,548 - OrquestradorBTG - INFO - Tipo: carteira
+2025-04-14 20:57:23,548 - OrquestradorBTG - INFO - Data: 2025-04-14
+2025-04-14 20:57:23,548 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:57:23,548 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:57:23,548 - OrquestradorBTG - INFO - INICIANDO PROCESSAMENTO DE CARTEIRA DIÁRIA
+2025-04-14 20:57:23,548 - OrquestradorBTG - INFO - ==================================================
+2025-04-14 20:57:23,549 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\apis\api_faas_portfolio.py --date 2025-04-14
+2025-04-14 20:57:24,589 - OrquestradorBTG - INFO - Comando executado com sucesso
+2025-04-14 20:57:24,590 - OrquestradorBTG - INFO - Utilizando diretório de dados: F:/12. Carteira Diária/BTG/2025/04 Abril\14.04
+2025-04-14 20:57:24,719 - OrquestradorBTG - INFO - MÉTRICA: Encontrados 0 arquivos XLSX para processamento
+2025-04-14 20:57:24,720 - OrquestradorBTG - INFO - Executando: python C:\Users\atrindade\Desktop\SCRIPTS ETL\btg_etl_project\insert_db\insert_carteira.py F:/12. Carteira Diária/BTG/2025/04 Abril\14.04 --auto
+2025-04-14 20:57:25,371 - OrquestradorBTG - ERROR - Falha no processamento dos dados de carteira: 
+2025-04-14 20:57:25,372 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:57:25,372 - OrquestradorBTG - INFO - RESUMO DE MÉTRICAS DO PROCESSAMENTO
+2025-04-14 20:57:25,372 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:57:25,372 - OrquestradorBTG - INFO - Tipo: CARTEIRA
+2025-04-14 20:57:25,372 - OrquestradorBTG - INFO - Data de Referência: 2025-04-14
+2025-04-14 20:57:25,373 - OrquestradorBTG - INFO - Extração - Total de Fundos: 0
+2025-04-14 20:57:25,373 - OrquestradorBTG - INFO - Processamento - Total de Registros: 0
+2025-04-14 20:57:25,373 - OrquestradorBTG - INFO - ----------------------------------------
+2025-04-14 20:57:25,373 - OrquestradorBTG - INFO - ================================================================================
+2025-04-14 20:57:25,373 - OrquestradorBTG - INFO - ORQUESTRADOR BTG ETL COMPLETO FINALIZADO - Status: FALHA
+2025-04-14 20:57:25,374 - OrquestradorBTG - INFO - ================================================================================
