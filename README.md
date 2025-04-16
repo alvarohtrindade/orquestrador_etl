@@ -2,7 +2,7 @@
 
 ## 1. Estrutura do Projeto
 
-O projeto agora está organizado da seguinte forma:
+O projeto está organizado da seguinte forma:
 
 ```
 /btg_etl_project/
