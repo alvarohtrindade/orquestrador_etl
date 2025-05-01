@@ -40,10 +40,10 @@ Este sistema é responsável pela extração, processamento e armazenamento de d
    DB_USER=seu_usuario
    DB_PASSWORD=sua_senha
    DB_NAME=seu_banco
-   DB_RENTABILIDADE=Rentabilidade_Fundos
+   DB_RENTABILIDADE=nome da sua tabela
 
    # Caminhos para armazenamento
-   BTG_RENTABILIDADE=caminho/para/armazenar/relatorios/rentabilidade
+   BTG_RENTABILIDADE=caminho/para/armazenar/relatorios/rentabilidade *(alterar)*
    ```
 
 ## Guia de Uso - Extração de Dados (api_faas_rentabilidade.py)

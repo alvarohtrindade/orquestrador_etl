@@ -335,8 +335,9 @@ def process_titulos_privados(df, nome_fundo, data):
         
         # Adicionando a coluna Tp_Fundo com valor None
         titulos_privados_df['Tp_Fundo'] = None
-        # Não definimos 'Descricao' aqui, pois será o valor da coluna 'Portfólio Inv.'
-        titulos_privados_df['Cod'] = grupo_map.get('RENDA FIXA', None)
+        titulos_privados_df['Descricao'] = None
+        titulos_privados_df['Cod'] = grupo_map.get('RENDA FIXA', None)  # Preencher com o código correto
+        #titulos_privados_df['Portfólio Inv.'] = titulos_privados_df.apply(atualizar_grupo, axis=1)
 
         return titulos_privados_df
     except Exception as e:
@@ -386,9 +387,10 @@ def titulos_publicos(df, nome_fundo, data):
         
         # Adicionando a coluna Tp_Fundo com valor None
         publicos_df['Tp_Fundo'] = None
-        # Não definimos 'Descricao' aqui, pois será o valor da coluna 'Portfólio Inv.'
-        publicos_df['Cod'] = grupo_map.get('RENDA FIXA', None)
-
+        publicos_df['Descricao'] = None
+        publicos_df['Cod'] = grupo_map.get('RENDA FIXA', None)  # Preencher com o código correto
+        #publicos_df['Portfólio Inv.'] = publicos_df.apply(atualizar_grupo, axis=1)
+        
         return publicos_df
     except Exception as e:
         print(f"Erro ao processar Títulos Públicos do fundo '{nome_fundo}': {e}")

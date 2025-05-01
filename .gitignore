@@ -1,2 +1,7 @@
-# Ignorar arquivo ENV
+# Arquivos ou pastas que devem ser ignorados pelo Git
 .env
+logs
+mappings
+scheduler_1d.bat
+scheduler_2d.bat
+scheduler_josmar.bat

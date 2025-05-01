@@ -1,8 +1,8 @@
-# Projeto BTG ETL
+# Projeto BTG ETL - Grupo Catálise
 
 ## 1. Estrutura do Projeto
 
-O projeto agora está organizado da seguinte forma:
+O projeto está organizado da seguinte forma:
 
 ```
 /btg_etl_project/
@@ -23,7 +23,7 @@ O projeto agora está organizado da seguinte forma:
 ├── .gitignore                   # Configuração de exclusão de arquivos do Git
 ├── orquestrador_btg.py          # NOVO: Orquestrador de fluxo ETL
 ├── requirements.txt             # ATUALIZADO: Dependências do projeto
-└── revisao_final.md             # Documento de revisão do projeto
+└── README.md             # Documento de revisão do projeto
 ```
 
 

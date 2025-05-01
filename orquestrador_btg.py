@@ -360,7 +360,7 @@ def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None, apena
         pasta_dados = diretorio_saida or BTG_RENTABILIDADE
         caminho_pasta = os.path.join(pasta_dados, data_pasta)
         
-        # Atualizar data de referência nas métricas
+        # Atualizar data de referência
         metricas_rentabilidade["data_referencia"] = data
     
     if not os.path.exists(caminho_pasta):
@@ -369,19 +369,29 @@ def processar_rentabilidade(data=None, dias_atras=1, diretorio_saida=None, apena
     
     logger.info(f"Utilizando diretório de dados: {caminho_pasta}")
     
-    # Contar arquivos JSON no diretório para métricas
+    # Contar arquivos JSON no diretório
     json_files = glob.glob(os.path.join(caminho_pasta, "*.json"))
     metricas_rentabilidade["extracao"]["arquivos_extraidos"] = len(json_files)
     logger.info(f"MÉTRICA: Encontrado {len(json_files)} arquivo(s) JSON para processamento")
     
-    # Etapa 2: Processamento e carga
+    # Normalizar o caminho
+    caminho_pasta_normalizado = caminho_pasta.replace('\\', '/')
     cmd_processamento = [
         "python", 
         str(INSERT_DIR / "insert_rentabilidade.py"), 
         "--json-dir", 
-        caminho_pasta, 
+        caminho_pasta_normalizado, 
         "--auto"
     ]
+    
+    # Adicionar parâmetro de mapeamento se disponível
+    mapping_file = os.getenv("MAP_NMFUNDOS_PATH")
+    if mapping_file and os.path.exists(mapping_file):
+        cmd_processamento.extend(["--mapping-file", mapping_file])
+        logger.info(f"Utilizando arquivo de mapeamento: {mapping_file}")
+    
+    # Adicionar parâmetro de debug para ajudar no diagnóstico
+    cmd_processamento.append("--debug")
     
     sucesso_processamento, metricas_processamento = executar_comando(
         cmd_processamento, 
