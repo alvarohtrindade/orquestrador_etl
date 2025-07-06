@@ -26,20 +26,3 @@ O projeto está organizado da seguinte forma:
 └── README.md             # Documento de revisão do projeto
 ```
 
-
-## 2. Recomendações Futuras
-
-Para evolução futura do projeto, recomendo considerar:
-
-1. **Notificações por e-mail ou Slack**: Implementar alertas automáticos em caso de falhas no processo ETL
-
-2. **Dashboard de monitoramento**: Criar uma interface web simples para visualizar o status das execuções
-
-3. **Migração para Docker**: Containerizar a aplicação para facilitar a implantação e garantir consistência de ambiente
-
-
-## 3. Conclusão
-
-O projeto BTG ETL agora possui um fluxo completo, documentado e orquestrado para extração, processamento e carga de dados de carteira e rentabilidade. A implementação do orquestrador simplifica significativamente a operação diária e reduz a necessidade de intervenção manual.
-
-O sistema está pronto para uso em ambiente de produção, com capacidade para ser agendado e executado de forma automática.
